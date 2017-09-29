@@ -2,6 +2,9 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <span v-bind:title="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -17,15 +20,31 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <div>
+    {{newDiv}}
+    </div>
+    <ol>
+      <li v-for="todo in todos">
+        {{todo.text}}
+      </li>
+    </ol>
   </div>
 </template>
 
 <script>
+/* 代码要求特别严格，比如todos:[]这样是不行的，必须在:与[之间加入空格，如todos: [] */
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Blade的第一个Vue项目',
+      message: '页面加载于 ' + new Date(),
+      newDiv: 'new Div to set value',
+      todos: [
+        {text: '学习JavaScript'},
+        {text: '学习Vue'},
+        {text: '整个牛项目'}
+      ]
     }
   }
 }
